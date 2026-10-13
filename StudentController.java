@@ -15,12 +15,12 @@ public class StudentController {
         return null;
     }
 
-    // Nhap GPA (0 - 4.0), nhap sai thi nhap lai
+    // Nhap GPA (0 - 4.0)  nhap sai thi nhap lai
     private double readGpa() {
         while (true) {
             try {
                 System.out.print("Nhap diem Gpa tu 0 - 4.0: ");
-                String input = scanner.nextLine().trim().replace(",", ".");
+                String input = scanner.nextLine().trim().replace(",", "."); // nhap duoc . hoac ,
                 double gpa = Double.parseDouble(input);
                 if (gpa < 0 || gpa > 4.0) {
                     System.out.println("Gpa phai trong khoang 0 - 4.0");
@@ -42,7 +42,7 @@ public class StudentController {
         }
     }
 
-    // In tieu de bang (cung do rong cot voi Student.displayData)
+    // In tieu de 
     private void printHeader() {
         System.out.printf("| %-10s | %-25s | %-25s | %-12s | %5s |%n",
                 "Ma SV", "Ho ten", "Email", "SDT", "GPA");
@@ -127,11 +127,12 @@ public class StudentController {
     }
 
     public void sortStudentsByGpaDescending() {
+        // Vòng ngoài: mỗi lượt đẩy 1 phần tử "nhỏ nhất" về cuối danh sách
         for (int i = 0; i < studentList.size() - 1; i++) {
             for (int j = 0; j < studentList.size() - 1 - i; j++) {
                 Student a = studentList.get(j);
                 Student b = studentList.get(j + 1);
-
+                // Nếu GPA của a nhỏ hơn b thì sai thứ tự giảm dần -> hoán đổi
                 if (a.getGpa() < b.getGpa()) {
                     studentList.set(j, b);
                     studentList.set(j + 1, a);
